@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('employee_contacts', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('employee_id')->index();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
