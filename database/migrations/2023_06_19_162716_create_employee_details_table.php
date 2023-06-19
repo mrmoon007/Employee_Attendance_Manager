@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('employee_details', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('employee_id')->index();
+            $table->string('address')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
