@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
+            $table->string('first_name')->nullable();
             $table->string('full_name')->index();
-            $table->string('email')->index();
+            $table->string('email')->unique()->index();
             $table->string('sso_account_id')->nullable();
             $table->string('sso_service')->nullable();
             $table->string('password');
             $table->string('status', 15)->default('Pending')->index();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
