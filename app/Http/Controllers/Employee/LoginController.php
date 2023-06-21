@@ -5,30 +5,29 @@ namespace App\Http\Controllers\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRequest;
 use App\Models\Employee;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Socialite;
 
 class LoginController extends Controller
 {
+
+    public function showLoginForm() 
+    {
+        return view('employee.login');
+    }
+
      /**
      * Login authenticate operation.
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return redirectResponse
      */
     public function authenticate(AuthRequest $request)
     {
         $data = $request->only('email', 'password');
-        $userData = Employee::where('email', $data['email'])->first();
 
-        if (!Hash::check($data['password'], $userData->password)) {
-
-            return back()->withInput()->withErrors(['error' => __("Invalid User")]);
-        }
-
-        if (Auth::guard('user')->attempt($data)) {
-
+        if (Auth::guard('employee')->attempt($data, false)) {
+            return redirect()->route('employee.dashboard');
         }
         return back()->withInput()->withErrors(['email' => __("Invalid email or password")]);
     }
@@ -79,6 +78,19 @@ class LoginController extends Controller
         } catch (\Exception $e) {
             dd($e->getMessage());
         }
+    }
+
+
+    /**
+     * Log out the employee.
+     *
+     * @return RedirectResponse
+     */
+    public function logout()
+    {
+        Auth::guard('employee')->logout();
+
+        return redirect()->route('login');
     }
 
 }

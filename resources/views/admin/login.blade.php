@@ -19,24 +19,10 @@
                         <label class="mb-1"><strong>Password</strong></label>
                         <input type="password" class="form-control" value="Password">
                     </div>
-                    <div class="row d-flex justify-content-between mt-4 mb-2">
-                        <div class="mb-3">
-                           <div class="form-check custom-checkbox ms-1">
-                                <input type="checkbox" class="form-check-input" id="basic_checkbox_1">
-                                <label class="form-check-label" for="basic_checkbox_1">Remember my preference</label>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <a href="page-forgot-password.html">Forgot Password?</a>
-                        </div>
-                    </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
                     </div>
                 </form>
-                <div class="new-account mt-3">
-                    <p>Don't have an account? <a class="text-primary" href="page-register.html">Sign up</a></p>
-                </div>
             </div>
         </div>
     </div>

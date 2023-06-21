@@ -19,7 +19,7 @@
 	
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
-    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet">
 
 </head>
 
@@ -39,9 +39,9 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="{{ asset('admin/vendor/global/global.min.js') }}"></script>
-    <script src="{{ asset('admin/js/custom.min.js') }}"></script>
-    <script src="{{ asset('admin/js/dlabnav-init.js') }}"></script>
-	<script src="{{ asset('admin/js/styleSwitcher.js') }}"></script>
+    <script src="{{ asset('dist/vendor/global/global.min.js') }}"></script>
+    <script src="{{ asset('dist/js/custom.min.js') }}"></script>
+    <script src="{{ asset('dist/js/dlabnav-init.js') }}"></script>
+	<script src="{{ asset('dist/js/styleSwitcher.js') }}"></script>
 </body>
 </html>
