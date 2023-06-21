@@ -1,3 +1,7 @@
+@extends('layouts.master-login')
+
+
+@section('content')
 <div class="authincation-content">
     <div class="row no-gutters">
         <div class="col-xl-12">
@@ -37,3 +41,4 @@
         </div>
     </div>
 </div>
+@endsection
