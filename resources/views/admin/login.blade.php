@@ -1,5 +1,6 @@
 @extends('layouts.master-login')
 
+@section('page_title', 'Admin login form')
 
 @section('content')
 <div class="authincation-content">

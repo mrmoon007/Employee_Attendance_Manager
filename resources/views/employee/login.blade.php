@@ -1,5 +1,6 @@
 @extends('layouts.master-login')
 
+@section('page_title', 'Employee login form')
 
 @section('content')
 <div class="authincation-content">
@@ -27,15 +28,12 @@
                                 <label class="form-check-label" for="basic_checkbox_1">Remember my preference</label>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <a href="page-forgot-password.html">Forgot Password?</a>
-                        </div>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
                     </div>
                     <div class="text-center mt-2">
-                        <a href="#" class="btn btn-primary btn-block">Login with facebook</a>
+                        <a href="{{ route('google.login') }}" class="btn btn-primary btn-block">Login with facebook</a>
                     </div>
                 </form>
             </div>
