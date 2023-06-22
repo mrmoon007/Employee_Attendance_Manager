@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminAutheRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -27,5 +26,17 @@ class LoginController extends Controller
             return redirect()->route('admin.dashboard');
         }
         return back()->withInput()->withErrors(['email' => __("Invalid email or password")]);
+    }
+
+    /**
+     * Log out the admin.
+     *
+     * @return RedirectResponse
+     */
+    public function logout()
+    {
+        Auth::guard('web')->logout();
+
+        return redirect()->route('login');
     }
 }

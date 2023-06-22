@@ -17,19 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     // to_route('employee.login');
-//     redirect()->route('employee.login');
-// });
-
-
+// Employee sso login routes
 Route::get('auth/google', [LoginController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
-Route::get('admin', [AdminLoginController::class, 'showLoginForm']);
-Route::post('admin/authenticate', [AdminLoginController::class, 'authenticate'])->name('admin.authenticate');
+
+// Employee auth routes
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('employee/authenticate', [LoginController::class, 'authenticate'])->name('employee.authenticate');
 Route::get('employee/logout', [LoginController::class, 'logout'])->name('employee.logout');
+
+// Admin auth routes
+Route::get('admin', [AdminLoginController::class, 'showLoginForm']);
+Route::post('admin/authenticate', [AdminLoginController::class, 'authenticate'])->name('admin.authenticate');
+Route::get('admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
