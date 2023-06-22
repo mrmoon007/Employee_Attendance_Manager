@@ -34,6 +34,9 @@
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
                     </div>
+                    <div class="text-center mt-2">
+                        <a href="#" class="btn btn-primary btn-block">Login with facebook</a>
+                    </div>
                 </form>
             </div>
         </div>
