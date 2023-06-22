@@ -27,7 +27,7 @@ class LoginController extends Controller
         $data = $request->only('email', 'password');
 
         if (Auth::guard('employee')->attempt($data, false)) {
-            return redirect()->route('employee.dashboard');
+            return redirect()->intended('employee/dashboard');
         }
         return back()->withInput()->withErrors(['email' => __("Invalid email or password")]);
     }
@@ -51,32 +51,32 @@ class LoginController extends Controller
     {
         try {
     
-            $employee = Socialite::driver('google')->user();
+            $employee = Socialite::driver('google')->stateless()->user();
      
             $finduser = Employee::where('email', $employee->email)->first();
      
             if($finduser){
      
-                Auth::login($finduser);
-    
-                return redirect('/home');
+                Auth::guard('employee')->login($finduser);
+ 
+                return redirect()->route('employee.dashboard');
      
-            }else{
+            } else {
+
                 $newEmployee = Employee::create([
-                    'full_name' => $employee->name,
                     'email' => $employee->email,
+                    'full_name' => $employee->name,
                     'sso_account_id'=> $employee->id,
                     'sso_service'=> 'google',
-                    'password' => encrypt('123456dummy')
+                    'password' => Hash::make('secret')
                 ]);
     
-                Auth::login($newEmployee);
-     
-                return redirect('/home');
+                Auth::guard('employee')->login($newEmployee);              
+                return redirect()->route('employee.dashboard');
             }
     
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            redirect()->route('login');
         }
     }
 

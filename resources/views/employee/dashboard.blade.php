@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('employee.layouts.master')
 
 @section('css')
     

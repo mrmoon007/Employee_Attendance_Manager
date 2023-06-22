@@ -59,7 +59,7 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-        @include('layouts.includes.nav-header')
+        @include('employee.layouts.includes.nav-header')
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -67,7 +67,7 @@
 		<!--**********************************
             Chat box start
         ***********************************-->
-		@include('layouts.includes.chat-box')
+		@include('employee.layouts.includes.chat-box')
 		<!--**********************************
             Chat box End
         ***********************************-->
@@ -75,7 +75,7 @@
 		<!--**********************************
             Header start
         ***********************************-->
-        @include('layouts.includes.header')
+        @include('employee.layouts.includes.header')
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -83,7 +83,7 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        @include('layouts.includes.sidebar')
+        @include('employee.layouts.includes.sidebar')
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -104,7 +104,7 @@
         <!--**********************************
             Footer start
         ***********************************-->
-       @include('layouts.includes.footer')
+       @include('employee.layouts.includes.footer')
         <!--**********************************
             Footer end
         ***********************************-->
@@ -136,7 +136,6 @@
     <script src="{{ asset('dist/js/custom.min.js') }}"></script>
 	<script src="{{ asset('dist/js/dlabnav-init.js') }}"></script>
 	<script src="{{ asset('dist/js/demo.js') }}"></script>
-    <script src="{{ asset('dist/js/styleSwitcher.js') }}"></script>
 
     @yield('js')
 	

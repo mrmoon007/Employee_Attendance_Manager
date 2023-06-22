@@ -14,6 +14,9 @@ class Employee extends Authenticatable
     protected $fillable = [
         'name',
         'email', 
+        'full_name',
+        'sso_account_id',
+        'sso_service',
         'password',
     ];
 
@@ -22,4 +25,13 @@ class Employee extends Authenticatable
       'password', 
       'remember_token',
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+      'password' => 'hashed',
+  ];
 }

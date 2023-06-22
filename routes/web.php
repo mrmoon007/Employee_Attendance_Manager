@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
 use App\Http\Controllers\Employee\LoginController;
@@ -31,12 +32,15 @@ Route::get('admin', [AdminLoginController::class, 'showLoginForm']);
 Route::post('admin/authenticate', [AdminLoginController::class, 'authenticate'])->name('admin.authenticate');
 Route::get('admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
+Route::resource('admin/employee', EmployeeController::class);
 
-Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
-    Route::get('dashboard/', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::prefix('admin')->name('admin.')->middleware(['auth:web'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 
 Route::prefix('employee')->name('employee.')->middleware(['auth:employee'])->group(function () {
-    Route::get('/', [EmployeeDashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/dashboard', [EmployeeDashboardController::class, 'index'])->name('dashboard');
 });

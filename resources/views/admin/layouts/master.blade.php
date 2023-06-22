@@ -19,6 +19,9 @@
 	
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
+
+    <!-- Datatable -->
+    <link href="{{ asset('dist/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 	
 	<link href="{{ asset('dist/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('dist/vendor/nouislider/nouislider.min.css') }}">
@@ -136,7 +139,13 @@
     <script src="{{ asset('dist/js/custom.min.js') }}"></script>
 	<script src="{{ asset('dist/js/dlabnav-init.js') }}"></script>
 	<script src="{{ asset('dist/js/demo.js') }}"></script>
-    <script src="{{ asset('dist/js/styleSwitcher.js') }}"></script>
+
+
+
+	
+    <!-- Datatable -->
+    <script src="{{ asset('dist/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('dist/js/plugins-init/datatables.init.js') }}"></script>
 
     @yield('js')
 	

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('employee_id')->index();
             $table->string('address')->nullable();
+            $table->string('date_of_birth')->nullable();
+            $table->string('gender')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });
