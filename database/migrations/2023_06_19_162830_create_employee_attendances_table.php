@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('date')->nullable();
             $table->dateTime('check_in_time')->nullable();
             $table->dateTime('check_out_time')->nullable();
+            $table->time('duration')->nullable();
             $table->string('status', 45)->nullable()->index()->comment('Present / Adsent / Late');
             $table->timestamps();
         });

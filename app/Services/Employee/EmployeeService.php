@@ -2,11 +2,9 @@
 
 namespace App\Services\Employee;
 
-use App\Models\Employee;
 use App\Models\EmployeeAttendance;
-use App\Models\EmployeeContact;
-use App\Models\EmployeeDetails;
 use App\Models\Schedule;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 
 class EmployeeService
@@ -46,12 +44,20 @@ class EmployeeService
             $employee = Auth::guard('employee')->user();
             $attendance = EmployeeAttendance::where('date', date("Y-m-d"))->whereEmployee_id($employee->id)->latest()->first();
             $attendance->check_out_time = date("Y-m-d H:i:s");
+            $attendance->duration = $this->timeDureationCalculate($attendance->check_in_time);
             $attendance->save();
 
             return true;
         } catch (\Throwable $th) {
-            dd($th);
             return false;
         }
+    }
+
+    public function timeDureationCalculate($startDate)
+    {
+        $current_t= new DateTime($startDate);
+        $start_t= new DateTime(date("Y-m-d H:i:s"));
+
+        return $start_t->diff($current_t)->format('%H:%I:%S');
     }
 }
