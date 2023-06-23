@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EmployeeStoreRequest;
+use App\Models\Employee;
 use App\Services\Admin\EmployeeService;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('admin.employee.index');
+        $employees = Employee::with('details', 'contacts')->latest()->paginate(5);
+        return view('admin.employee.index', compact('employees'));
     }
 
     /**
