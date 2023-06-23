@@ -61,28 +61,19 @@ class LoginController extends Controller
         try {
     
             $employee = Socialite::driver('google')->stateless()->user();
-     
-            $finduser = Employee::where('email', $employee->email)->first();
-     
-            if($finduser){
-     
-                Auth::guard('employee')->login($finduser);
- 
-                return redirect()->route('employee.dashboard');
-     
-            } else {
 
-                $newEmployee = Employee::create([
-                    'email' => $employee->email,
-                    'full_name' => $employee->name,
-                    'sso_account_id'=> $employee->id,
-                    'sso_service'=> 'google',
-                    'password' => Hash::make('secret')
-                ]);
-    
-                Auth::guard('employee')->login($newEmployee);              
-                return redirect()->route('employee.dashboard');
-            }
+            $finduser = Employee::updateOrCreate([
+                'email' => $employee->email,
+            ], [
+                'email' => $employee->email,
+                'full_name' => $employee->name,
+                'sso_account_id'=> $employee->id,
+                'sso_service'=> 'google',
+                'password' => Hash::make('secret')
+            ]);
+            Auth::guard('employee')->login($finduser);
+
+            return redirect()->route('employee.dashboard');
     
         } catch (\Exception $e) {
             redirect()->route('login');

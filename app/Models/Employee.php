@@ -12,12 +12,13 @@ class Employee extends Authenticatable
     protected $guard = 'employee';
 
     protected $fillable = [
-        'name',
+        'first_name',
         'email', 
         'full_name',
         'sso_account_id',
         'sso_service',
         'password',
+        'status'
     ];
 
 

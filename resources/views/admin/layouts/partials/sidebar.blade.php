@@ -31,12 +31,6 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="index.html">Dashboard Light</a></li>
-                    <li><a href="index-2.html">Dashboard Dark</a></li>
-                    <li><a href="my-wallet.html">My Wallet</a></li>
-                    <li><a href="page-invoices.html">Invoices</a></li>
-                    <li><a href="cards-center.html">Cards Center</a></li>
-                    <li><a href="page-transaction.html">Transaction</a></li>
-                    <li><a href="transaction-details.html">Transaction Details</a></li>	
                 </ul>
 
             </li>
@@ -45,8 +39,8 @@
                     <span class="nav-text">Employee</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('employee.index') }}">Employee list</a></li>
-                    <li><a href="{{ route('employee.create') }}">Add Employee</a></li>
+                    <li><a href="{{ route('admin.employee.index') }}">Employee list</a></li>
+                    <li><a href="{{ route('admin.employee.create') }}">Add Employee</a></li>
                 </ul>
             </li>
         </ul>

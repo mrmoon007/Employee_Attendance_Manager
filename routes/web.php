@@ -33,10 +33,10 @@ Route::get('admin', [AdminLoginController::class, 'showLoginForm'])->name('admin
 Route::post('admin/authenticate', [AdminLoginController::class, 'authenticate'])->name('admin.authenticate');
 Route::post('admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
-Route::resource('admin/employee', EmployeeController::class);
 
-Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth:web'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('employee', EmployeeController::class);
 });
 
 

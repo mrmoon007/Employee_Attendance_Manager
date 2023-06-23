@@ -33,7 +33,7 @@
                         <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
                     </div>
                     <div class="text-center mt-2">
-                        <a href="{{ route('google.login') }}" class="btn btn-primary btn-block">Login with facebook</a>
+                        <a href="{{ route('google.login') }}" class="btn btn-light btn-block">Login with Google</a>
                     </div>
                 </form>
             </div>

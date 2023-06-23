@@ -3,10 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\EmployeeStoreRequest;
+use App\Services\Admin\EmployeeService;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
+    /**
+     * 
+     */
+    public $employeeService;
+
+    /**
+     * Constructor for employee controller
+     */
+    public function __construct(EmployeeService $employeeService) 
+    {
+        $this->employeeService = $employeeService;
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -26,9 +42,11 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EmployeeStoreRequest $request)
     {
-        dd($request);
+        $this->employeeService->store($request);
+
+        return to_route('admin.employee.index');
     }
 
     /**

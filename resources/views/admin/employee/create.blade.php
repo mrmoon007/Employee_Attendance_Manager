@@ -19,8 +19,16 @@
             </ol>
         </div>
 
+        @if ($errors->any())
+     @foreach ($errors->all() as $error)
+           <div class="alert alert-danger" role="alert">
+                 {{ $error }}
+           </div>
+    @endforeach
+@endif
+
         <!-- row -->
-        <form action="{{ route('employee.store') }}" method="POST">
+        <form action="{{ route('admin.employee.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-xl-7 col-lg-12">
@@ -72,11 +80,21 @@
                                 <div class="row">
                                     <div class="mb-3 col-md-12">
                                         <label class="form-label">Contact Name</label>
-                                        <input type="text" name="contact_name" class="form-control" placeholder="1234 Main St">
+                                        <input type="text" name="contacts[0][contact_name]" class="form-control" placeholder="1234 Main St">
                                     </div>
                                     <div class="mb-3 col-md-12">
                                         <label class="form-label">Contact Email</label>
-                                        <input type="email" name="contact_email" class="form-control" placeholder="Email">
+                                        <input type="email" name="contacts[0][contact_email]" class="form-control" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="mb-3 col-md-12">
+                                        <label class="form-label">Contact Name</label>
+                                        <input type="text" name="contacts[1][contact_name]" class="form-control" placeholder="1234 Main St">
+                                    </div>
+                                    <div class="mb-3 col-md-12">
+                                        <label class="form-label">Contact Email</label>
+                                        <input type="email" name="contacts[1][contact_email]" class="form-control" placeholder="Email">
                                     </div>
                                 </div>
                             </div>
@@ -108,9 +126,8 @@
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label">Gender</label>
                                         <div class="input-group">
-                                            <label class="radio-inline me-3"><input type="radio" name="optradio"> Option 1</label>
-                                        <label class="radio-inline me-3"><input type="radio" name="optradio"> Option 1</label>
-                                        <label class="radio-inline me-3"><input type="radio" name="optradio"> Option 1</label>
+                                            <label class="radio-inline me-3"><input type="radio" name="gender" value="male"> Male</label>
+                                            <label class="radio-inline me-3"><input type="radio" name="gender" value="female"> female</label>
                                         </div>
                                     </div>
                                 </div>
