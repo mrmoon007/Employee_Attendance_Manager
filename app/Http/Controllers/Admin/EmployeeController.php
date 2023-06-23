@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\EmployeeStoreRequest;
 use App\Models\Employee;
 use App\Services\Admin\EmployeeService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
 {
@@ -80,6 +81,18 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $employee = Employee::find($id);
+
+        if(file_exists(public_path('images/'.$employee?->details?->photo))){
+            unlink(public_path('images/'.$employee?->details?->photo));
+        };
+
+        // if ($employee?->details?->photo) {
+        //     Storage::disk('public')->delete('images/'.$employee?->details?->photo);
+        // }
+
+        $employee->delete();
+
+        return to_route('admin.employee.index');
     }
 }
