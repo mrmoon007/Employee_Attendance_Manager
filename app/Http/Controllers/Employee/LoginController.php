@@ -73,6 +73,8 @@ class LoginController extends Controller
             ]);
             Auth::guard('employee')->login($finduser);
 
+            dd(Auth::guard('employee')->login($finduser));
+
             return redirect()->route('employee.dashboard');
     
         } catch (\Exception $e) {

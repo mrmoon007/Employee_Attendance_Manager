@@ -44,12 +44,4 @@ class EmployeeService
             return false;
         }
     }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        Schema::defaultStringLength(191);
-    }
 }

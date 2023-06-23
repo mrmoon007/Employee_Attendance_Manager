@@ -43,13 +43,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:web'])->group(function
 Route::prefix('employee')->name('employee.')->middleware(['auth:employee'])->group(function () {
 
     Route::get('dashboard', [EmployeeDashboardController::class, 'index'])->name('dashboard');
-});
-
-
-Route::get('/token', function (Request $request) {
-    $token = $request->session()->token();
- 
-    $token1 = csrf_token();
- 
-    dd($token , $token1);
+    Route::get('punch-in', [EmployeeDashboardController::class, 'punchIn'])->name('punch-in');
+    Route::get('punch-out', [EmployeeDashboardController::class, 'punchOut'])->name('punch-out');
 });

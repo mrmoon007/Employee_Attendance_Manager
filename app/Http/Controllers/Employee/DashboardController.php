@@ -3,10 +3,24 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Services\Employee\EmployeeService;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    /**
+     * 
+     */
+    public $employeeService;
+
+    /**
+     * Constructor for employee controller
+     */
+    public function __construct(EmployeeService $employeeService) 
+    {
+        $this->employeeService = $employeeService;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -16,19 +30,21 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Employee punch in
      */
-    public function create()
+    public function punchIn()
     {
-        //
+        $this->employeeService->punchIn();
+        return redirect()->back();
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Employee punch out 
      */
-    public function store(Request $request)
+    public function punchOut()
     {
-        //
+        $this->employeeService->punchOut();
+        return redirect()->back();
     }
 
     /**

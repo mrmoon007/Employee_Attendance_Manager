@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('employee_id')->nullable()->index();
             $table->date('date')->nullable();
-            $table->date('check_in_time')->nullable();
-            $table->date('check_out_time')->nullable();
-            $table->string('status', 45)->index()->comment('Present / Adsent / Late');
+            $table->dateTime('check_in_time')->nullable();
+            $table->dateTime('check_out_time')->nullable();
+            $table->string('status', 45)->nullable()->index()->comment('Present / Adsent / Late');
             $table->timestamps();
         });
     }

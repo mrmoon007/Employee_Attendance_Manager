@@ -8,8 +8,21 @@
                     </div>
                 </div>
                 <ul class="navbar-nav header-right">
+                    @php
+                        $attendance = App\Models\EmployeeAttendance::where('date', date('Y-m-d'))
+                            ->whereEmployee_id(Auth::guard('employee')->user()->id)
+                            ->whereNull('check_out_time')
+                            ->latest()
+                            ->first();
+                    @endphp
                     <li class="nav-item">
-                        <a href="javascript:void(0);" class="btn btn-primary d-sm-inline-block d-none">Punch in</a>
+                        @if ($attendance)
+                            <a href="{{ route('employee.punch-out') }}"
+                                class="btn btn-primary d-sm-inline-block d-none">Punch out</a>
+                        @else
+                            <a href="{{ route('employee.punch-in') }}"
+                                class="btn btn-primary d-sm-inline-block d-none">Punch in</a>
+                        @endif
                     </li>
                 </ul>
             </div>

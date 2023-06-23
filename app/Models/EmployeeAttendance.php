@@ -10,6 +10,14 @@ class EmployeeAttendance extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'employee_id',
+        'date', 
+        'check_in_time',
+        'check_out_time',
+        'status',
+    ];
+
     /**
      * Get the post that owns the comment.
      */
