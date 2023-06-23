@@ -5,14 +5,22 @@ namespace App\Http\Controllers\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRequest;
 use App\Models\Employee;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 use Socialite;
 
 class LoginController extends Controller
 {
 
-    public function showLoginForm() 
+    /**
+     * Employee login form
+     *
+     * @return View
+     */
+    public function showLoginForm(): View
     {
         return view('employee.login');
     }
@@ -22,11 +30,12 @@ class LoginController extends Controller
      *
      * @return redirectResponse
      */
-    public function authenticate(AuthRequest $request)
+    public function authenticate(AuthRequest $request): RedirectResponse
     {
         $data = $request->only('email', 'password');
 
         if (Auth::guard('employee')->attempt($data, false)) {
+            $request->session()->regenerate();
             return redirect()->intended('employee/dashboard');
         }
         return back()->withInput()->withErrors(['email' => __("Invalid email or password")]);
@@ -37,7 +46,7 @@ class LoginController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function redirectToGoogle()
+    public function redirectToGoogle(): RedirectResponse
     {
         return Socialite::driver('google')->redirect();
     }
@@ -45,9 +54,9 @@ class LoginController extends Controller
     /**
      * take data from Google and save in db & redirect in main page
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function handleGoogleCallback()
+    public function handleGoogleCallback(): RedirectResponse
     {
         try {
     
@@ -86,10 +95,12 @@ class LoginController extends Controller
      *
      * @return RedirectResponse
      */
-    public function logout()
+    public function logout(Request $request): RedirectResponse
     {
         Auth::guard('employee')->logout();
-
+        $request->session()->invalidate();
+ 
+        $request->session()->regenerateToken();
         return redirect()->route('login');
     }
 

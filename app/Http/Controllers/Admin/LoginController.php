@@ -4,11 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminAutheRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
+    /**
+    * Show admin login form.
+    *
+    * @return View
+    */
+    public function showLoginForm(): View
     {
         return view('admin.login');
     }
@@ -18,11 +26,12 @@ class LoginController extends Controller
     *
     * @return redirectResponse
     */
-    public function authenticate(AdminAutheRequest $request)
+    public function authenticate(AdminAutheRequest $request): RedirectResponse
     {
         $data = $request->only('email', 'password');
 
         if (Auth::guard('web')->attempt($data, true)) {
+            $request->session()->regenerate();
             return redirect()->route('admin.dashboard');
         }
         return back()->withInput()->withErrors(['email' => __("Invalid email or password")]);
@@ -33,10 +42,14 @@ class LoginController extends Controller
      *
      * @return RedirectResponse
      */
-    public function logout()
+    public function logout(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
 
-        return redirect()->route('login');
+        $request->session()->invalidate();
+ 
+        $request->session()->regenerateToken();
+
+        return redirect()->route('admin.login');
     }
 }

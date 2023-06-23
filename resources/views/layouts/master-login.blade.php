@@ -42,6 +42,6 @@
     <script src="{{ asset('dist/vendor/global/global.min.js') }}"></script>
     <script src="{{ asset('dist/js/custom.min.js') }}"></script>
     <script src="{{ asset('dist/js/dlabnav-init.js') }}"></script>
-	<script src="{{ asset('dist/js/styleSwitcher.js') }}"></script>
+	{{-- <script src="{{ asset('dist/js/styleSwitcher.js') }}"></script> --}}
 </body>
 </html>
