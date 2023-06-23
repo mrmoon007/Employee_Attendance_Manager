@@ -26,8 +26,8 @@
                     <span class="nav-text">Attendance</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="index.html">Employee list</a></li>
-                    <li><a href="index-2.html">Add Employee</a></li>
+                    <li><a href="{{ route('employee.attendance-list') }}">Attendance list</a></li>
+                    <li><a href="index-2.html">Report</a></li>
                 </ul>
 
             </li>

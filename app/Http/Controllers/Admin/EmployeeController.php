@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\EmployeeStoreRequest;
 use App\Models\Employee;
 use App\Services\Admin\EmployeeService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
 {

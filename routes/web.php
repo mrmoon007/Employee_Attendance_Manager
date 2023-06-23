@@ -45,4 +45,5 @@ Route::prefix('employee')->name('employee.')->middleware(['auth:employee'])->gro
     Route::get('dashboard', [EmployeeDashboardController::class, 'index'])->name('dashboard');
     Route::get('punch-in', [EmployeeDashboardController::class, 'punchIn'])->name('punch-in');
     Route::get('punch-out', [EmployeeDashboardController::class, 'punchOut'])->name('punch-out');
+    Route::get('attendance-list', [EmployeeDashboardController::class, 'attendanceList'])->name('attendance-list');
 });
