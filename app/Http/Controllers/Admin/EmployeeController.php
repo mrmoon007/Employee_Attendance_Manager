@@ -57,7 +57,8 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $employee = Employee::with('details', 'contacts')->find($id);
+        return view('admin.employee.show', compact('employee'));
     }
 
     /**
@@ -83,7 +84,7 @@ class EmployeeController extends Controller
     {
         $employee = Employee::find($id);
 
-        if(file_exists(public_path('images/'.$employee?->details?->photo))){
+        if($employee?->details?->photo && file_exists(public_path('images/'.$employee?->details?->photo))){
             unlink(public_path('images/'.$employee?->details?->photo));
         };
 

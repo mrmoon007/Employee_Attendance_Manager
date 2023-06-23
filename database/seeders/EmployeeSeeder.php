@@ -19,8 +19,8 @@ class EmployeeSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'full_name' => 'Agatha Williams',
-                'email' => 'admin@gmail.com',
+                'full_name' => 'Williams',
+                'email' => 'employee@gmail.com',
                 'password' => '$2y$10$zXgnp.9rIXbNYr3ZUo7xVOWUhKKHXJZ63nBgT1zLFgi0CG6RUgfxG',
                 'remember_token' => NULL,
                 'status' => 'Active',

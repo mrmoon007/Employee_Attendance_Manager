@@ -49,6 +49,8 @@
                                                 <div class="d-flex">
                                                     <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
                                                             class="fas fa-pencil-alt"></i></a>
+                                                    <a href="{{ route('admin.employee.show', $employee->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i
+                                                            class="fas fa-eye"></i></a>
 
                                                     <form method="POST" action="{{ route('admin.employee.destroy', $employee->id) }}">
                                                         @csrf

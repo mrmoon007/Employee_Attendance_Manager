@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Agatha Williams',
+                'name' => 'Agatha',
                 'email' => 'admin@gmail.com',
                 'password' => '$2y$10$zXgnp.9rIXbNYr3ZUo7xVOWUhKKHXJZ63nBgT1zLFgi0CG6RUgfxG',
                 'remember_token' => NULL,
