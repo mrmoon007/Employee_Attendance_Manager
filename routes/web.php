@@ -36,6 +36,7 @@ Route::post('admin/logout', [AdminLoginController::class, 'logout'])->name('admi
 Route::prefix('admin')->name('admin.')->middleware(['auth:web'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('employee', EmployeeController::class);
+    Route::get('attendance-list', [DashboardController::class, 'attendanceList'])->name('attendance-list');
 });
 
 

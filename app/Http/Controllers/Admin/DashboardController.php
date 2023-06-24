@@ -3,33 +3,34 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
+use App\Models\EmployeeAttendance;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() : View
     {
-        return view('admin.dashboard');
+        $data['totalEmployee'] = Employee::count();
+        $data['activeEmployee'] = Employee::whereStatus('active')->count();
+        $data['lateEmployee'] = EmployeeAttendance::where('date', date('Y-m-d'))->whereStatus('Late')->count();
+        $data['presentEmployee'] =EmployeeAttendance::where('date', date('Y-m-d'))->whereStatus('Present')->count();
+        return view('admin.dashboard', $data);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display attendance list.
      */
-    public function create()
+    public function attendanceList(Request $request) : View
     {
-        //
+        $attendances = EmployeeAttendance::with('employee:id,full_name')->latest('employee_attendances.id')->paginate(10);
+        return view('admin.employee.attendance-list', compact('attendances'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.

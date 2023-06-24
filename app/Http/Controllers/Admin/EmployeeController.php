@@ -27,9 +27,18 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employees = Employee::with('details', 'contacts')->latest()->paginate(5);
+        $searchTerm = $request->search;
+        $status = $request->status;
+
+        $employees = Employee::where('full_name', 'like', '%' . $searchTerm . '%')
+        ->where('status', $status)
+        ->with(['contacts' => function ($query) use ($searchTerm) {
+            $query->where('contact_name', 'like', '%' . $searchTerm . '%');
+        }])
+        ->paginate(5);
+
         return view('admin.employee.index', compact('employees'));
     }
 

@@ -129,9 +129,9 @@
 	<script src="{{ asset('dist/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
 	
 	<!-- Apex Chart -->
-	<script src="{{ asset('dist/vendor/apexchart/apexchart.js') }}"></script>
+	{{-- <script src="{{ asset('dist/vendor/apexchart/apexchart.js') }}"></script>
 	<script src="{{ asset('dist/vendor/nouislider/nouislider.min.js') }}"></script>
-	<script src="{{ asset('dist/vendor/wnumb/wNumb.js') }}"></script>
+	<script src="{{ asset('dist/vendor/wnumb/wNumb.js') }}"></script> --}}
 	
 	<!-- Dashboard 1 -->
 	<script src="{{ asset('dist/js/dashboard/dashboard-1.js') }}"></script>

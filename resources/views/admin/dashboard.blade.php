@@ -19,8 +19,8 @@
                         
                     </div>
                     <div>
-                        <h2 class="text-white invoice-num">2478</h2>
-                        <span class="text-white fs-18">Total Invoices</span>
+                        <h2 class="text-white invoice-num">{{ $totalEmployee }}</h2>
+                        <span class="text-white fs-18">Total Employee</span>
                     </div>
                 </div>
             </div>
@@ -36,8 +36,8 @@
                         
                     </div>
                     <div>
-                        <h2 class="text-white invoice-num">983</h2>
-                        <span class="text-white fs-18">Paid Invoices</span>
+                        <h2 class="text-white invoice-num">{{ $activeEmployee }}</h2>
+                        <span class="text-white fs-18">Active Employee</span>
                     </div>
                 </div>
             </div>
@@ -53,8 +53,8 @@
                         
                     </div>
                     <div>
-                        <h2 class="text-white invoice-num">1256</h2>
-                        <span class="text-white fs-18">Unpaid Invoices</span>
+                        <h2 class="text-white invoice-num">{{ $lateEmployee }}</h2>
+                        <span class="text-white fs-18">Today Late Employee</span>
                     </div>
                 </div>
             </div>
@@ -69,47 +69,8 @@
                     
                     </div>
                     <div>
-                        <h2 class="text-white invoice-num">652</h2>
-                        <span class="text-white fs-18">Total Invoices Sent</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-9 col-xxl-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-xl-6">
-                            <div class="card-bx bg-blue">
-                                <img class="pattern-img" src="images/pattern/pattern6.png" alt="">
-                                <div class="card-info text-white">
-                                    <img src="images/pattern/circle.png" class="mb-4" alt="">
-                                    <h2 class="text-white card-balance">$824,571.93</h2>
-                                    <p class="fs-16">Wallet Balance</p>
-                                    <span>+0,8% than last week</span>
-                                </div>
-                                <a class="change-btn" href="javascript:void(0);"><i class="fa fa-caret-up up-ico"></i>Change<span class="reload-icon"><i class="fas fa-sync-alt reload active"></i></span></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="row  mt-xl-0 mt-4">
-                                <div class="col-md-6">
-                                    <h4 class="card-title">Card's Overview</h4>
-                                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit psu olor</span>
-                                    <ul class="card-list mt-4">
-                                        <li><span class="bg-blue circle"></span>Account<span>20%</span></li>
-                                        <li><span class="bg-success circle"></span>Services<span>40%</span></li>
-                                        <li><span class="bg-warning circle"></span>Restaurant<span>15%</span></li>
-                                        <li><span class="bg-light circle"></span>Others<span>15%</span></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <canvas id="polarChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
+                        <h2 class="text-white invoice-num">{{ $presentEmployee }}</h2>
+                        <span class="text-white fs-18">Today Present Employee</span>
                     </div>
                 </div>
             </div>

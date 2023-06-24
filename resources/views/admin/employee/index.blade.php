@@ -29,7 +29,7 @@
                                     <tr>
                                         <th></th>
                                         <th>Name</th>
-                                        <th>Email</th>
+                                        <th>Contact Name</th>
                                         <th>Gender</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -42,7 +42,15 @@
                                                     src="{{ asset('images/' . $employee?->details?->photo) }}"
                                                     alt=""></td>
                                             <td>{{ $employee?->full_name }}</td>
-                                            <td>{{ $employee?->email }}</td>
+                                            <td>
+                                                @forelse ($employee?->contacts as $contact)
+                                                   <div>
+                                                    {{ $contact->contact_name }}
+                                                   </div>
+                                                @empty
+                                                    No data available
+                                                @endforelse
+                                            </td>
                                             <td>{{ $employee?->details?->gender }}</td>
                                             <td>{{ $employee?->status }}</td>
                                             <td>

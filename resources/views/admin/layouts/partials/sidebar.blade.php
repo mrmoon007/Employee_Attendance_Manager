@@ -27,6 +27,7 @@
                 <ul aria-expanded="false">
                     <li><a href="{{ route('admin.employee.index') }}">Employee list</a></li>
                     <li><a href="{{ route('admin.employee.create') }}">Add Employee</a></li>
+                    <li><a href="{{ route('admin.attendance-list') }}">Attendance list</a></li>
                 </ul>
             </li>
         </ul>
