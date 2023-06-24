@@ -46,7 +46,7 @@ class LoginController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function redirectToGoogle(): RedirectResponse
+    public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();
     }
@@ -56,11 +56,11 @@ class LoginController extends Controller
      *
      * @return RedirectResponse
      */
-    public function handleGoogleCallback(): RedirectResponse
+    public function handleGoogleCallback()
     {
         try {
     
-            $employee = Socialite::driver('google')->stateless()->user();
+            $employee = Socialite::driver('google')->user();
 
             $finduser = Employee::updateOrCreate([
                 'email' => $employee->email,
@@ -69,12 +69,11 @@ class LoginController extends Controller
                 'full_name' => $employee->name,
                 'sso_account_id'=> $employee->id,
                 'sso_service'=> 'google',
+                'status'=> 'Active',
                 'password' => Hash::make('secret')
             ]);
-            Auth::guard('employee')->login($finduser);
 
-            dd(Auth::guard('employee')->login($finduser));
-
+            Auth::guard('employee')->loginUsingId($finduser->id);
             return redirect()->route('employee.dashboard');
     
         } catch (\Exception $e) {

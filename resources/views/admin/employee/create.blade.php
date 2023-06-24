@@ -42,7 +42,7 @@
                                     <div class="mb-3 col-md-12">
                                         <label class="form-label">First Name</label>
                                         <input type="text" name="first_name" class="form-control"
-                                            placeholder="1234 Main St">
+                                            placeholder="First Name">
                                     </div>
                                     <div class="mb-3 col-md-12">
                                         <label class="form-label">Full Name</label>
@@ -76,31 +76,23 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Contacts info</h4>
+                            <span id="contact-form-add">+</span>
                         </div>
                         <div class="card-body">
-                            <div class="basic-form">
-                                <div class="row">
-                                    <div class="mb-3 col-md-12">
+                            <div class="basic-form" id="contat-form">
+                                <div class="row contact-row" id="row_1">
+                                    <div class="mb-3 col-md-10">
                                         <label class="form-label">Contact Name</label>
                                         <input type="text" name="contacts[0][contact_name]" class="form-control"
-                                            placeholder="1234 Main St">
+                                            placeholder="Contact Name">
                                     </div>
-                                    <div class="mb-3 col-md-12">
+                                    <div class="mb-3 col-md-10">
                                         <label class="form-label">Contact Email</label>
                                         <input type="email" name="contacts[0][contact_email]" class="form-control"
-                                            placeholder="Email">
+                                            placeholder="Contact Email">
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-3 col-md-12">
-                                        <label class="form-label">Contact Name</label>
-                                        <input type="text" name="contacts[1][contact_name]" class="form-control"
-                                            placeholder="1234 Main St">
-                                    </div>
-                                    <div class="mb-3 col-md-12">
-                                        <label class="form-label">Contact Email</label>
-                                        <input type="email" name="contacts[1][contact_email]" class="form-control"
-                                            placeholder="Email">
+                                    <div class="col-md-2">
+                                        <span id='remove_1' class='remove'>X</span>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +110,7 @@
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label">Address</label>
                                         <input type="text" name="address" class="form-control"
-                                            placeholder="1234 Main St">
+                                            placeholder="Enter Address">
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label">Photo</label>
@@ -134,7 +126,7 @@
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label">Gender</label>
                                         <div class="input-group">
-                                            <label class="radio-inline me-3"><input type="radio" name="gender"
+                                            <label class="radio-inline me-3"><input type="radio" checked name="gender"
                                                     value="male"> Male</label>
                                             <label class="radio-inline me-3"><input type="radio" name="gender"
                                                     value="female"> female</label>
@@ -152,5 +144,5 @@
 @endsection
 
 @section('js')
-
+    <script src="{{ asset('dist/js/admin/employee-store.min.js') }}"></script>
 @endsection

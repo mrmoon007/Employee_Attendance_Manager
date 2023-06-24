@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
 use App\Http\Controllers\Employee\LoginController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
