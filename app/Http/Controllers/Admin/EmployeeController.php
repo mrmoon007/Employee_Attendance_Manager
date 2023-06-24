@@ -29,15 +29,20 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        $searchTerm = $request->search;
+        $searchTerm = $request->searchTerm;
         $status = $request->status;
 
-        $employees = Employee::where('full_name', 'like', '%' . $searchTerm . '%')
-        ->where('status', $status)
-        ->with(['contacts' => function ($query) use ($searchTerm) {
+        $query = Employee::with(['contacts' => function ($query) use ($searchTerm) {
             $query->where('contact_name', 'like', '%' . $searchTerm . '%');
-        }])
-        ->paginate(5);
+        }]);
+        if ($searchTerm) {
+            $query = $query->where('full_name', 'like', '%' . $searchTerm . '%');
+        }
+
+        if ($status) {
+            $query = $query->where('status', $status);
+        }
+        $employees = $query->paginate(5);
 
         return view('admin.employee.index', compact('employees'));
     }

@@ -23,7 +23,7 @@ class EmployeeService
             $attendance->check_in_time = date("Y-m-d H:i:s");
             $attendance->date = date("Y-m-d");
 
-            if (!($schedule?->time_in >= $attendance->attendance_time)) {
+            if (!($schedule?->time_in >= date("H:i"))) {
                 $attendance->status = 'late';
             };
             $attendance->status = 'present';

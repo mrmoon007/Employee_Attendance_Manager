@@ -22,6 +22,29 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Recent Payments Queue</h4>
+                        <form action="{{ route('admin.employee.index') }}" method="GET">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="m-1">
+                                        <input type="text" class="form-control input-default " placeholder="search with full name and contat name">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select name="status" class="m-1 default-select form-control wide mb-3" style="display: none;">
+                                        <option value="">choose</option>
+                                        <option value="active">Active</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button class="m-1 btn btn-primary" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-responsive-md">

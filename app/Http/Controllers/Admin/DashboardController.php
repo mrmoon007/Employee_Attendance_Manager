@@ -17,8 +17,8 @@ class DashboardController extends Controller
     {
         $data['totalEmployee'] = Employee::count();
         $data['activeEmployee'] = Employee::whereStatus('active')->count();
-        $data['lateEmployee'] = EmployeeAttendance::where('date', date('Y-m-d'))->whereStatus('Late')->count();
-        $data['presentEmployee'] =EmployeeAttendance::where('date', date('Y-m-d'))->whereStatus('Present')->count();
+        $data['lateEmployee'] = EmployeeAttendance::where('date', date('Y-m-d'))->whereStatus('Late')->distinct()->count('employee_id');
+        $data['presentEmployee'] =EmployeeAttendance::where('date', date('Y-m-d'))->whereStatus('Present')->distinct()->count('employee_id');
         return view('admin.dashboard', $data);
     }
 

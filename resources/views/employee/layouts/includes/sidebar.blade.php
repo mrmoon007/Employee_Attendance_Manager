@@ -27,7 +27,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('employee.attendance-list') }}">Attendance list</a></li>
-                    <li><a href="index-2.html">Report</a></li>
+                    <li><a href="{{ route('employee.attendance-list') }}">Report</a></li>
                 </ul>
 
             </li>
