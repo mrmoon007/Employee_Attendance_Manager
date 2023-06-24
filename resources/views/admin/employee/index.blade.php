@@ -28,7 +28,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="m-1">
-                                        <input type="text" class="form-control input-default " placeholder="search with full name and contat name">
+                                        <input type="text" name="searchTerm" class="form-control input-default " placeholder="search with full name and contat name">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">

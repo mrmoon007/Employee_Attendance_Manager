@@ -32,11 +32,15 @@ class EmployeeController extends Controller
         $searchTerm = $request->searchTerm;
         $status = $request->status;
 
-        $query = Employee::with(['contacts' => function ($query) use ($searchTerm) {
-            $query->where('contact_name', 'like', '%' . $searchTerm . '%');
-        }]);
+        $query = Employee::with(['contacts']);
+
         if ($searchTerm) {
-            $query = $query->where('full_name', 'like', '%' . $searchTerm . '%');
+            $query = $query->where(function ($query) use ($searchTerm) {
+                $query->where('full_name', 'like', '%' . $searchTerm . '%')
+                    ->orWhereHas('contacts', function ($query) use ($searchTerm) {
+                        $query->where('contact_name', 'like', '%' . $searchTerm . '%');
+                    });
+            });
         }
 
         if ($status) {

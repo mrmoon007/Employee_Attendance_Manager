@@ -27,40 +27,7 @@ class DashboardController extends Controller
      */
     public function attendanceList(Request $request) : View
     {
-        $attendances = EmployeeAttendance::with('employee:id,full_name')->latest('employee_attendances.id')->paginate(10);
+        $attendances = EmployeeAttendance::with('employee:id,full_name')->where('date', date('Y-m-d'))->latest('employee_attendances.id')->paginate(10);
         return view('admin.employee.attendance-list', compact('attendances'));
-    }
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
